@@ -8,6 +8,8 @@ RUN apt-get update && \
     chown debian-transmission: /var/lib/transmission-daemon/.config/transmission-daemon && \
     usermod -d /var/lib/transmission-daemon debian-transmission
 
+ADD settings.json /var/lib/transmission-daemon/.config/transmission-daemon/settings.json
+
 VOLUME ["/transmission-downloads", "/transmission-watch"]
 
 USER debian-transmission
