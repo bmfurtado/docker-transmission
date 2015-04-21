@@ -8,12 +8,10 @@ RUN apt-get update && \
     chown debian-transmission: /var/lib/transmission-daemon/.config/transmission-daemon && \
     usermod -d /var/lib/transmission-daemon debian-transmission
 
-VOLUME /transmission-downloads
-VOLUME /transmission-watch
+VOLUME ["/transmission-downloads", "/transmission-watch"]
 
 USER debian-transmission
 
-EXPOSE 51413
-EXPOSE 9091
+EXPOSE 51413 9091
 
-CMD ["/usr/bin/transmission-daemon","-f","-u","$user","-v","$pass","-w","/transmission-downloads","-c","/transmission-watch"]
+CMD /usr/bin/transmission-daemon -f -u $user -v $pass -w /transmission-downloads -c /transmission-watch
