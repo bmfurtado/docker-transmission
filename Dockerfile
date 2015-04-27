@@ -15,4 +15,4 @@ USER debian-transmission
 
 EXPOSE 51413 9091
 
-CMD /usr/bin/transmission-daemon -f
+CMD /usr/bin/transmission-daemon -f -g /var/lib/transmission-daemon/info
